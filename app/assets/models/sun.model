@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/sun.obj",
+    "textures": {},
+    "shaders": {
+        "vertex": "shaders/vertex_shader_sun.glsl",
+        "fragment": "shaders/fragment_shader_sun.glsl"
+    }
+}

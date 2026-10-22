@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/cuberef.obj",
+    "textures": {
+        "AAA": "textures/cuberef_albedo.png",
+        "NN": "textures/black.png",
+        "R": "textures/white.png",
+        "O": "textures/white.png",
+        "EEE": "textures/black.png"
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_simple.glsl",
+        "fragment": "shaders/fragment_shader_simple.glsl"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/ship-canopy.obj",
+    "textures": {
+        "AAA": "textures/black.png",
+        "R": "textures/black.png"
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_glass.glsl",
+        "fragment": "shaders/fragment_shader_glass.glsl"
+    },
+    "opacity": 0.7
+}

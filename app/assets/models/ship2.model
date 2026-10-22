@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/ship.obj",
+    "textures": {
+        "AAA": "textures/ship_albedo.dds",
+        "NN": "textures/ship_normal.dds",
+        "R": "textures/ship_roughness.dds",
+        "O": "textures/ship_occlusion.dds",
+        "EEE": "textures/ship_emission.dds"
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_simple.glsl",
+        "fragment": "shaders/fragment_shader_simple.glsl"
+    }
+}

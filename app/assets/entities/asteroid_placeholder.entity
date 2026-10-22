@@ -1,0 +1,7 @@
+{
+    "$schema": "../../../engine/schemas/entity.schema",
+    "name": "Asteroid",
+    "models": [
+        "models/asteroid_placeholder.model"
+    ]
+}

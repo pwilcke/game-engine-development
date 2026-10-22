@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Model",
+  "description": "A model is a collection of meshes, textures, and shaders.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "mesh": {
+      "type": "string",
+      "description": "The path to the mesh file.",
+      "pattern": "^meshes\\/(.+)\\.(mesh|obj)$"
+    },
+    "meshes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^meshes\\/(.+)\\.(mesh|obj)$"
+      }
+    },
+    "renderClass": {
+      "type": "string",
+      "enum": ["standard", "doubleSided", "volumetric", "volumetricExclusion"]
+    },
+    "textures": {
+      "type": "object",
+      "properties": {
+        "AAA": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "NN": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "R": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "O": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "EEE": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "Noise": { "type": "string", "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$" },
+        "Skybox": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "One image that holds all six sides of the skybox cube.",
+              "pattern": "^textures\\/(.+)\\.(dds|png|jpg)$"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "texture": {
+                  "type": "string",
+                  "description": "The path to the six faces of the cube map, * stands for the face number 1 to 6.",
+                  "pattern": "^textures\\/(.+)\\*\\.(dds|png|jpg)$"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["CubeMap"]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "texture",
+                "type"
+              ]
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "shaders": {
+      "type": "object",
+      "properties": {
+        "vertex": {
+          "type": "string",
+          "pattern": "^shaders\\/(.+)\\.glsl$"
+        },
+        "fragment": {
+          "type": "string",
+          "pattern": "^shaders\\/(.+)\\.glsl$"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "vertex",
+        "fragment"
+      ]
+    },
+    "uniforms": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          { "type": "boolean" },
+          { "type": "number" },
+          {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 4
+          }
+        ]
+      }
+    },
+    "opacity": {
+      "type": "number",
+      "description": "How much the model covers what lies behind it, from 0 (invisible) to 1 (opaque).",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "textures",
+    "shaders"
+  ],
+  "anyOf": [
+    { "required": [ "mesh" ] },
+    { "required": [ "meshes" ] }
+  ]
+}

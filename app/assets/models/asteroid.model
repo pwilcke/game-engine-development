@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/asteroid1.obj",
+    "textures": {
+        "AAA": "textures/asteroid_1_albedo.dds",
+        "NN": "textures/asteroid_1_normal.dds",
+        "O": "textures/asteroid_1_occlusion.dds",
+        "R": "textures/asteroid_1_roughness.dds",
+        "EEE": "textures/black.dds"
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_simple.glsl",
+        "fragment": "shaders/fragment_shader_simple.glsl"
+    }
+}

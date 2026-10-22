@@ -1,0 +1,39 @@
+# Game Engine Development
+# Technische Hochschule Mittelhessen
+# Copyright © 2021-2026 Tobias Reimann
+#
+# This mesh is licensed under the Creative Commons
+# Attribution-NonCommercial-ShareAlike 4.0 International License.
+# To view a copy of this license, visit
+# https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+o CubeMap
+v -1.000000 -1.000000 1.000000
+v -1.000000 1.000000 1.000000
+v -1.000000 -1.000000 -1.000000
+v -1.000000 1.000000 -1.000000
+v 1.000000 -1.000000 1.000000
+v 1.000000 1.000000 1.000000
+v 1.000000 -1.000000 -1.000000
+v 1.000000 1.000000 -1.000000
+vt 0.000000 0.000000
+vn 0.0000 0.0000 0.0000
+s off
+# -X
+f 2/1/1 1/1/1 3/1/1
+f 2/1/1 3/1/1 4/1/1
+# -Z
+f 7/1/1 4/1/1 3/1/1
+f 7/1/1 8/1/1 4/1/1
+# +X
+f 5/1/1 8/1/1 7/1/1
+f 5/1/1 6/1/1 8/1/1
+# +Z
+f 1/1/1 6/1/1 5/1/1
+f 1/1/1 2/1/1 6/1/1
+# -Y
+f 1/1/1 7/1/1 3/1/1
+f 1/1/1 5/1/1 7/1/1
+# +Y
+f 6/1/1 4/1/1 8/1/1
+f 6/1/1 2/1/1 4/1/1

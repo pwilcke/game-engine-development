@@ -1,0 +1,7 @@
+{
+    "$schema": "../../../engine/schemas/entity.schema",
+    "name": "Reference Cube",
+    "models": [
+        "models/cuberef.model"
+    ]
+}

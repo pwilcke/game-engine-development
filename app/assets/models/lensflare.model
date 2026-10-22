@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/screen.obj",
+    "textures": {
+        "Noise": "textures/noise.png"
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_lensflare.glsl",
+        "fragment": "shaders/fragment_shader_lensflare.glsl"
+    }
+}

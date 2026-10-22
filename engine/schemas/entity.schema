@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Entity",
+  "description": "An entity is a thing in the world. This file is its template: what it consists of, not where it stands.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the entity, for logging and debugging."
+    },
+    "radius": {
+      "type": "number",
+      "description": "Radius of the entity's collision sphere around its origin, before the entity is scaled. 0 turns collisions off."
+    },
+    "models": {
+      "type": "array",
+      "description": "The models this entity is drawn with. A plain string is the shorthand for a model without a scale.",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^models\\/(.+)\\.model$"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string",
+                "pattern": "^models\\/(.+)\\.model$"
+              },
+              "scale": {
+                "type": "array",
+                "items": { "type": "number" },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "model"
+            ]
+          }
+        ]
+      }
+    },
+    "cameras": {
+      "type": "array",
+      "description": "The cameras this entity can be seen through. All angles are in degrees.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["fixed", "orbit"]
+          },
+          "offset": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "rotation": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "yawLimit": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "pitchLimit": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "distance": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "type",
+          "offset",
+          "rotation"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "name",
+    "models"
+  ]
+}

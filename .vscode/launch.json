@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "mygame",
+            "program": "${workspaceFolder}/bin/mygame",
+            "cwd": "${workspaceFolder}/app",
+            "preLaunchTask": "make",
+            "type": "lldb-dap",
+            "request": "launch",
+            "windows": {
+                "program": "${workspaceFolder}/bin/mygame.exe",
+            }
+        }
+    ]
+}

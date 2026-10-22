@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../engine/schemas/entity.schema",
+    "name": "Ship",
+    "radius": 1.45,
+    "models": [
+        "models/ship2.model",
+        "models/ship-canopy.model"
+    ],
+    "cameras": [
+        {
+            "name": "Chase",
+            "type": "fixed",
+            "offset": [-14, 0.0, 2.0],
+            "rotation": [0.0, 0.0],
+            "yawLimit": [-45.0, 45.0],
+            "pitchLimit": [-18.0, 30.0]
+        },
+        {
+            "name": "Orbit",
+            "type": "orbit",
+            "offset": [0.0, 0.0, 0.0],
+            "rotation": [135.0, 25.0],
+            "distance": 10.0
+        }
+    ]
+}

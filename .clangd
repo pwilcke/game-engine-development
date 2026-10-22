@@ -1,0 +1,13 @@
+{
+  "CompileFlags": {
+    "Add": [
+      "-std=c++20",
+      "-Wno-deprecated-declarations",
+      "-I.",
+      "-Iengine/libraries/glad/include",
+      "-Iengine/libraries/glfw-3.5.1/include",
+      "-Iengine/libraries/json",
+      "-Iengine/libraries/stb"
+    ]
+  }
+}

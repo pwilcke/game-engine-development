@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.entity": "json",
+        "*.model": "json",
+        "*.schema": "json"
+    }
+}

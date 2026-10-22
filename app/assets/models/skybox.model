@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../engine/schemas/model.schema",
+    "mesh": "meshes/cubemap.obj",
+    "textures": {
+        "Skybox": {
+            "texture": "textures/sky_c6_*.dds",
+            "type": "CubeMap"
+        }
+    },
+    "shaders": {
+        "vertex": "shaders/vertex_shader_skybox.glsl",
+        "fragment": "shaders/fragment_shader_skybox.glsl"
+    }
+}
