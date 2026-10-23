@@ -20,11 +20,14 @@
 #include "app/src/mygame.h"
 
 #include "app/src/shipscript.h"
+#include "engine/src/core/inputhandler.h"
 #include "engine/src/math/vector3.h"
 
+#include <GLFW/glfw3.h>
 #include <chrono>
 #include <iostream>
 
+using Engine::Core::InputHandler;
 using Engine::Math::Vector3;
 
 namespace App
@@ -47,6 +50,27 @@ namespace App
 
         ship->setPosition(Vector3(0.0, 0.0, 0.0));
         ship->addScript(std::make_unique<ShipScript>());
+
+        // Add key mappings
+        InputHandler::registerKeyAction("reset", GLFW_KEY_SPACE);
+        InputHandler::onAction("reset", [this]()
+        {
+            ship->setRotation({});
+        });
+
+        // Register keys for for yaw pitch and roll
+        InputHandler::registerKeyAxis("yaw", GLFW_KEY_E, GLFW_KEY_Q);
+        InputHandler::registerKeyAxis("pitch", GLFW_KEY_S, GLFW_KEY_W);
+        InputHandler::registerKeyAxis("pitch", GLFW_KEY_DOWN, GLFW_KEY_UP);
+        InputHandler::registerKeyAxis("roll", GLFW_KEY_A, GLFW_KEY_D);
+        InputHandler::registerKeyAxis("roll", GLFW_KEY_LEFT, GLFW_KEY_RIGHT);
+
+        // Register gamepad keys
+        InputHandler::registerButtonAction("reset", GLFW_GAMEPAD_BUTTON_A);
+
+        InputHandler::registerStickAxis("yaw", GLFW_GAMEPAD_AXIS_RIGHT_X, true);
+        InputHandler::registerStickAxis("pitch", GLFW_GAMEPAD_AXIS_LEFT_Y, true);
+        InputHandler::registerStickAxis("roll", GLFW_GAMEPAD_AXIS_LEFT_X);
 
         for (const Vector3 &position : {Vector3::forward * 25.0, Vector3::forward * -25.0, Vector3::left * 25.0, Vector3::left * -25.0, Vector3::up * 25.0, Vector3::up * -25.0})
         {

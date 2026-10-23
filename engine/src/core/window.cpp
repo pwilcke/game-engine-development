@@ -71,10 +71,17 @@ namespace Engine::Core
             InputHandler::keyCallback(key, scancode, mods, action == GLFW_PRESS);
         });
 
-        InputHandler::onKeyPress(GLFW_KEY_ESCAPE, [this]()
+        // Deleted line, direct callback for function
+        // InputHandler::onKeyPress(GLFW_KEY_ESCAPE, [this]()
+        // {
+        //     glfwSetWindowShouldClose(window, GLFW_TRUE);
+        // });
+        InputHandler::registerKeyAction("quit", GLFW_KEY_ESCAPE);
+        InputHandler::onAction("quit", [this]()
         {
             glfwSetWindowShouldClose(window, GLFW_TRUE);
         });
+        InputHandler::registerButtonAction("quit", GLFW_GAMEPAD_BUTTON_START);
     }
 
     Window::~Window()

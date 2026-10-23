@@ -19,6 +19,8 @@
 
 #include "engine/src/core/application.h"
 
+#include "engine/src/core/inputhandler.h"
+
 #include <chrono>
 #include <exception>
 #include <fstream>
@@ -68,6 +70,11 @@ namespace Engine::Core
 
             window.emplace(settings);
 
+            if (std::unique_ptr<std::istream> mappings = load("gamecontrollerdb.txt"))
+            {
+                InputHandler::loadGamepadMappings(*mappings);
+            }
+
             renderer.emplace(frontCommandBuffer, *window, settings);
             simulation.emplace(backCommandBuffer, *renderer);
         }
@@ -107,6 +114,9 @@ namespace Engine::Core
                 double t = utc.count();
 
                 double dt = frameTime.count();
+
+                // Check if key is being pressed e.g. rotation
+                InputHandler::update();
 
                 simulation->update(dt, t);
                 std::swap(frontCommandBuffer, backCommandBuffer);

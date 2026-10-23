@@ -19,9 +19,13 @@
 
 #pragma once
 
+#include <array>
 #include <cstdint>
 #include <functional>
+#include <iosfwd>
+#include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace Engine::Core
@@ -31,10 +35,35 @@ namespace Engine::Core
       public:
         InputHandler() = delete;
 
+        static void registerKeyAction(const std::string &action, uint32_t key);
+        static void onAction(const std::string &action, std::function<void()> callback);
+        static void fireAction(const std::string &action);
         static void keyCallback(uint32_t key, uint32_t scancode, uint32_t mods, bool pressed);
         static void onKeyPress(uint32_t code, std::function<void()> callback);
 
+        // Axis
+        static void registerKeyAxis(const std::string &axis, uint32_t negativeKey, uint32_t positiveKey);
+        static double getAxis(const std::string &axis);
+        static void update();
+
+        // Controller Support
+        static void registerButtonAction(const std::string &action, uint32_t button);
+        static void registerStickAxis(const std::string &axis, uint32_t input, bool invert = false);
+        static void loadGamepadMappings(std::istream &mappings);
+
       private:
+        static inline std::unordered_map<std::string, std::vector<std::pair<uint32_t, uint32_t>>> keyboardAxes = {};
+
         static inline std::unordered_map<uint32_t, std::vector<std::function<void()>>> keyCallbacks = {};
+        static inline std::unordered_map<std::string, std::vector<std::function<void()>>> actionCallbacks = {};
+        static inline std::unordered_map<uint32_t, std::vector<std::string>> keyboardActions = {};
+
+        static inline std::array<bool, 349> keyboardState = {};
+        static inline std::unordered_map<std::string, double> axes = {};
+
+        // Controller Support
+        static inline std::unordered_map<uint32_t, std::vector<std::string>> gamepadActions = {};
+        static inline std::unordered_map<std::string, std::vector<std::pair<uint32_t, bool>>> gamepadAxes = {};
+        static inline std::array<bool, 15> gamepadState = {};
     };
 }
